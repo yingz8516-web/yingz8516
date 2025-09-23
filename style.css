@@ -178,6 +178,19 @@ a:hover {
     color: var(--accent-color);
 }
 
+/* --- 聯絡區塊 --- */
+#contact {
+    text-align: center;
+}
+
+.contact-intro {
+    color: var(--text-color-secondary);
+    max-width: 600px;
+    margin: 1rem auto 2.5rem; /* 上方 | 左右自動 | 下方 */
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
 /* --- 聯絡按鈕 --- */
 .btn {
     display: inline-block;
