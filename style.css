@@ -1,11 +1,14 @@
-/* --- 通用樣式 --- */
+/* --- CSS 變數與基本設定 --- */
 :root {
     --background-color: #1a202c;
     --card-background-color: #2d3748;
     --accent-color: #4fd1c5;
+    --accent-color-dark: #38b2ac;
     --text-color: #f7fafc;
+    --text-color-secondary: #a0aec0;
     --header-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 html {
@@ -17,61 +20,103 @@ body {
     font-family: var(--body-font);
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 h1, h2, h3 {
     font-family: var(--header-font);
-    color: var(--accent-color);
+    color: var(--text-color);
+}
+
+h2 {
+    font-size: 2.25rem;
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 a {
     color: var(--accent-color);
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color-dark);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- 動畫效果 --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 為了展示效果，預設讓動畫直接播放。若要搭配 JS 滾動觸發，可將這段移除 */
+.reveal {
+    animation: fadeInSlideUp 1s ease-out forwards;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --- 導覽列 --- */
 .navbar {
-    background-color: var(--card-background-color);
-    padding: 1rem;
+    background-color: rgba(45, 55, 72, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
     position: sticky;
     top: 0;
+    width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.navbar nav ul {
+.nav-links {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
-.navbar nav ul li a {
+.nav-links a {
     color: var(--text-color);
     font-weight: bold;
-    transition: color 0.3s ease;
+    font-family: var(--header-font);
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.navbar nav ul li a:hover {
-    color: var(--accent-color);
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
 }
 
-/* --- 主要內容區塊 --- */
-main {
-    padding: 2rem;
-    max-width: 1500px;
-    margin: 0 auto;
-}
-
-.content-section {
-    padding: 60px 0;
-    border-bottom: 1px solid var(--card-background-color);
-}
-
-.content-section:last-of-type {
-    border-bottom: none;
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* --- 英雄區塊 --- */
@@ -80,79 +125,100 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 60vh;
+    min-height: 70vh;
     padding: 4rem 1rem;
+    background: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.8)), url('https://source.unsplash.com/random/1600x900/?technology,abstract') no-repeat center center/cover;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem); /* 響應式字體 */
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero-content p {
-    font-size: 1.25rem;
-    color: #a0aec0; /* Lighter text for subtitle */
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-color-secondary);
+}
+
+/* --- 內容區塊 --- */
+.content-section {
+    padding: 80px 0;
 }
 
 /* --- 專案區塊 --- */
-.project-cards {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .card {
     background-color: var(--card-background-color);
-    padding: 1.5rem;
     border-radius: 8px;
-    flex: 1; /* Allow cards to grow */
-    min-width: 280px; /* Minimum width for responsiveness */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid transparent;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-left-color: var(--accent-color);
+}
+
+.card-content {
+    padding: 1.5rem 2rem;
 }
 
 .card h3 {
     margin-top: 0;
+    color: var(--accent-color);
 }
 
 /* --- 聯絡按鈕 --- */
 .btn {
     display: inline-block;
-    background-color: var(--accent-color);
+    background-image: linear-gradient(45deg, var(--accent-color), var(--accent-color-dark));
     color: var(--background-color);
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-family: var(--header-font);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
-    background-color: #2c7a7b; /* Darker accent color */
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(79, 209, 197, 0.4);
+    color: #fff;
 }
 
 /* --- 頁尾 --- */
 .footer {
     text-align: center;
-    padding: 2rem;
-    margin-top: 2rem;
-    background-color: var(--card-background-color);
-    font-size: 0.9rem;
-}
-
-.footer .social-links {
-    margin-bottom: 1rem;
+    padding: 3rem 1.5rem;
+    margin-top: 4rem;
+    background-color: #111827; /* 更深的背景 */
+    color: var(--text-color-secondary);
 }
 
 .footer .social-links a {
-    margin: 0 0.5rem;
-    color: var(--text-color);
-    transition: color 0.3s ease;
+    color: var(--text-color-secondary);
 }
 
-.footer .social-links a:hover {
-    color: var(--accent-color);
-}```
+/* --- 響應式設計 --- */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.75rem;
+    }
+    .nav-links {
+        gap: 1.5rem;
+    }
+    .hero-section {
+        min-height: 50vh;
+    }
+}
