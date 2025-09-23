@@ -1,0 +1,158 @@
+/* --- 通用樣式 --- */
+:root {
+    --background-color: #1a202c;
+    --card-background-color: #2d3748;
+    --accent-color: #4fd1c5;
+    --text-color: #f7fafc;
+    --header-font: 'Montserrat', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font);
+    color: var(--accent-color);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* --- 導覽列 --- */
+.navbar {
+    background-color: var(--card-background-color);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.navbar nav ul li a {
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* --- 主要內容區塊 --- */
+main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--card-background-color);
+}
+
+.content-section:last-of-type {
+    border-bottom: none;
+}
+
+/* --- 英雄區塊 --- */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+    padding: 4rem 1rem;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: #a0aec0; /* Lighter text for subtitle */
+}
+
+/* --- 專案區塊 --- */
+.project-cards {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+}
+
+.card {
+    background-color: var(--card-background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    flex: 1; /* Allow cards to grow */
+    min-width: 280px; /* Minimum width for responsiveness */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* --- 聯絡按鈕 --- */
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #2c7a7b; /* Darker accent color */
+}
+
+/* --- 頁尾 --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: var(--card-background-color);
+    font-size: 0.9rem;
+}
+
+.footer .social-links {
+    margin-bottom: 1rem;
+}
+
+.footer .social-links a {
+    margin: 0 0.5rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: var(--accent-color);
+}```
