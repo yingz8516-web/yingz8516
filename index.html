@@ -65,6 +65,27 @@
     </p>
     <a href="mailto:[請填寫你的Email]" class="btn">寄送 Email</a>
 </section>
+            <section id="game" class="content-section reveal">
+                <h2>輕鬆一下：剪刀石頭布</h2>
+                <div class="game-container">
+                    <p class="game-intro">點擊下方按鈕，與電腦來一場對決吧！</p>
+                    <div class="game-choices">
+                        <button class="choice-btn" data-choice="rock">✊ 石頭</button>
+                        <button class="choice-btn" data-choice="paper">✋ 布</button>
+                        <button class="choice-btn" data-choice="scissors">✌️ 剪刀</button>
+                    </div>
+                    <div class="game-results">
+                        <p>你的選擇: <span id="player-choice">---</span></p>
+                        <p>電腦的選擇: <span id="computer-choice">---</span></p>
+                        <p class="result-text">結果: <span id="result-text">---</span></p>
+                    </div>
+                    <div class="game-score">
+                        <p>你的分數: <span id="player-score">0</span></p>
+                        <p>電腦的分數: <span id="computer-score">0</span></p>
+                    </div>
+                    <button id="reset-btn" class="btn-secondary">重置分數</button>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -76,6 +97,6 @@
         </div>
         <p>&copy; 2025 周堯尹. All Rights Reserved.</p>
     </footer>
-
+    <script src="script.js" defer></script>
 </body>
 </html>
