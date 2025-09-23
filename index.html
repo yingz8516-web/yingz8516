@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人介紹網站</title>
+    <title>個人介紹網站 (優化版)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -12,55 +12,63 @@
 <body>
 
     <header class="navbar">
-        <nav>
-            <ul>
-                <li><a href="#about">關於我</a></li>
-                <li><a href="#projects">專案</a></li>
-                <li><a href="#contact">聯絡</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">關於我</a></li>
+                    <li><a href="#projects">專案</a></li>
+                    <li><a href="#contact">聯絡</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <h1>周堯尹</h1>
-                <p>北科大電資一</p>
+                <h1>[請填寫你的名字]</h1>
+                <p>[請填寫你的學校與科系]</p>
             </div>
         </section>
 
-        <section id="about" class="content-section">
-            <h2>關於我</h2>
-            <p>
-                你好！我是一位充滿熱情的前端開發者，專注於打造優雅且高效的使用者介面。我熱衷於學習新技術，並將其應用於實務中，以解決實際問題並創造價值。我相信，簡潔的程式碼和良好的使用者體驗是衡量一個產品成功與否的關鍵。
-            </p>
-        </section>
+        <div class="container">
+            <section id="about" class="content-section reveal">
+                <h2>關於我</h2>
+                <p>
+                    你好！我是一位充滿熱情的前端開發者，專注於打造優雅且高效的使用者介面。我熱衷於學習新技術，並將其應用於實務中，以解決實際問題並創造價值。我相信，簡潔的程式碼和良好的使用者體驗是衡量一個產品成功與否的關鍵。
+                </p>
+            </section>
 
-        <section id="projects" class="content-section">
-            <h2>專案</h2>
-            <div class="project-cards">
-                <div class="card">
-                    <h3>專案一：響應式部落格</h3>
-                    <p>一個使用現代 CSS 技術（如 Flexbox 和 Grid）建立的，能夠適應各種螢幕尺寸的部落格網站。</p>
+            <section id="projects" class="content-section reveal">
+                <h2>專案</h2>
+                <div class="project-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>專案一：響應式部落格</h3>
+                            <p>一個使用現代 CSS 技術（如 Flexbox 和 Grid）建立的，能夠適應各種螢幕尺寸的部落格網站。</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>專案二：互動式待辦事項應用</h3>
+                            <p>一個功能齊全的待辦事項應用程式，使用者可以新增、刪除和標記完成任務，並將資料儲存在瀏覽器中。</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>專案二：互動式待辦事項應用</h3>
-                    <p>一個功能齊全的待辦事項應用程式，使用者可以新增、刪除和標記完成任務，並將資料儲存在瀏覽器中。</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="contact" class="content-section">
-            <h2>聯絡方式</h2>
-            <a href="mailto:[請填寫你的Email]" class="btn">寄送 Email</a>
-        </section>
+            <section id="contact" class="content-section reveal">
+                <h2>聯絡方式</h2>
+                <a href="mailto:[請填寫你的Email]" class="btn">寄送 Email</a>
+            </section>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="social-links">
-            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
             <span>&nbsp;|&nbsp;</span>
-            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <p>&copy; 2025 [請填寫你的名字]. All Rights Reserved.</p>
     </footer>
